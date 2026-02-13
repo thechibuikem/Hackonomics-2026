@@ -21,8 +21,6 @@ router.use(rateLimit);
 router.post("/signup", signup); //create account for fresh users
 router.post("/login", login); //recontinue for old users
 router.post("/logout", logout); //logout for old users
-
-
 router.post("/refresh-token",refreshToken) //access-token regenearation from refresh token
 
 
