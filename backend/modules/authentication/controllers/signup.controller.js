@@ -1,4 +1,5 @@
 import { signUpService } from "../services/signup.service.js";
+import { mode } from "../../../core/config.js";
 
 export async function signup(req, res) {
   // 1. get email and password from user query
@@ -15,7 +16,7 @@ export async function signup(req, res) {
     res.cookie("refreshToken", result.data.refreshToken, {
       httpOnly: true, // JS cannot access it
       path: "/",
-      secure: false, // only over HTTPS in production
+      secure: mode !== "local", // only over HTTPS in production
       sameSite: "Lax",
       maxAge: 30 * 24 * 60 * 60 * 1000,
     });
